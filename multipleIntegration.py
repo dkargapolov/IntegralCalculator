@@ -1,7 +1,11 @@
 from math import *
 
+def getFformula():
+    global fformula 
+    fformula = input('\nВведите выражение: ')
+
 def ff(x, y):
-    return x * x + y + y
+    return eval(fformula)
 
 def mLeft(a, b, c, d, nx, ny):
     sumX = 0
