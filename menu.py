@@ -1,127 +1,99 @@
+from webbrowser import get
+from integration import *
+from multipleIntegration import *
 from math import *
 
-a = int(input('Введите a: '))
-b = int(input('Введите b: '))
-n = int(input('Введите n: '))
-formula = input('Введите интеграл: ')
 
-def f(x):
-    return eval(formula)
+print('Выберите тип задачи:'
+      '\n 1. Численное интегрирование'
+      '\n 2. Кратный интеграл')
 
-def Left_Rect(a, b, n):
-    h = (b - a) / n
-    sum = 0
-    for i in range(n - 1):
-        sum += h * f(a + i * h)
+type = int(input('Введите число: '))
 
-    return sum
-
-def Right_Rect(a, b, n):
-    h = (b - a) / n
-    sum = 0
-    for i in range(1, n):
-        sum += h * f(a + i * h)
-
-    return sum
-
-def Trapeze(a, b, n):
-    h = (b - a) / n
-    sum = f(a) + f(b)
-    for i in range(1, n - 1):
-        sum += 2 * f(a + i * h)
-    
-    sum *= h / 2
-    return sum
-
-def Parabol(a, b, n):
-    h = (b - a) / n
-    sum = f(a) + f(b)
-    for i in range(1, n - 1):
-        k = 2 + 2 * (i % 2)
-        sum += k * f(a + i * h)
-    
-    sum *= h / 3
-    return sum
-
-def Left_Rect_per(a, b, n):
-    E = float(input('Введите точность: '))
-    IN = 0
-    I2N = 0
-    R = 1
-    h = (b - a) / n
-
-    while(R > E):
-        sum = 0
-        x = a + h
-
-        while(x <= b):
-            temp = f(x)
-            sum += temp
-            x += h
-    
-        I2N = h * sum
-        R = abs(I2N - IN)
-        IN = I2N
-        h = h / 2
-    
-    return I2N
-
-print('Выберите тип задачи:\n1.Численное интегрирование')
-print('Введите число:')
-
-type = int(input())
 match type:
     case 1:
-        print('Какой метод численного интегрирования вы выберите: '
-              '\n 1.Метод прямоугольников левых частей '
-              '\n 2.Метод прямоугольников правых частей '
-              '\n 3.Метод трапеций '
-              '\n 4.Метод парабол')
-        print('Введите число:')
-        method = int(input())
+        getFormula()
+        
+        a = int(input('Введите нижний предел: '))
+        b = int(input('Введите верхний предел: '))
+        n = int(input('Введите количество разбиений: '))
+
+        print('\nКакой метод численного интегрирования вы выберите: '
+              '\n 1. Метод прямоугольников левых частей '
+              '\n 2. Метод прямоугольников правых частей '
+              '\n 3. Метод трапеций '
+              '\n 4. Метод парабол')
+
+        method = int(input('Введите число: '))
         match method:
             case 1:
-                print('Вы выбрали метод прямоугольников левых частей')
-                print('Выберите алгоритм работы: \n 1.Алгоритм с постоянным шагом \n 2.Алгоритм с переменным шагом')
-                print('Введите число')
-                algorithm = int(input())
+                print('\nВы выбрали метод прямоугольников левых частей')
+                print('\nВыберите алгоритм работы: '
+                      '\n 1. Алгоритм с постоянным шагом' 
+                      '\n 2. Двойной пересчёт'
+                      '\n 3. Двойной пересчёт с отступами')
+
+                algorithm = int(input('Введите число: '))
                 match algorithm:
                     case 1:
-                        print('Вы выбрали алгоритм с постоянным шагом')
-                        print(Left_Rect(a, b, n))
+                        print('\nВы выбрали алгоритм с постоянным шагом')
+                        print(f'\nРезультат: {left(a, b, n)}')
                     case 2:
-                        print('Вы выбрали алгоритм с переменным шагом')
-                        print(Left_Rect_per(a, b, n))
+                        print('\nВы выбрали двойной пересчёт')
+                        print(f'\nРезультат: {doubleRecLeft(a, b, n)}')
+                    case 3:
+                        print('\nВы выбрали двойной пересчёт с отступами')
+                        print(f'\nРезультат: {doubleRec2Left(a, b, n)}')
             case 2:
-                print('Вы выбрали метод прямоугольников правых частей')
-                print('Выберите алгоритм работы: \n 1.Алгоритм с постоянным шагом \n 2.Алгоритм с переменным шагом')
-                print('Введите число')
-                algorithm = int(input())
+                print('\nВы выбрали метод прямоугольников правых частей')
+                print('\nВыберите алгоритм работы: '
+                      '\n 1. Алгоритм с постоянным шагом' 
+                      '\n 2. Двойной пересчёт'
+                      '\n 3. Двойной пересчёт с отступами')
+
+                algorithm = int(input('Введите число: '))
                 match algorithm:
                     case 1:
-                        print('Вы выбрали алгоритм с постоянным шагом')
-                        print(Right_Rect(a, b, n))
+                        print('\nВы выбрали алгоритм с постоянным шагом')
+                        print(f'\nРезультат: {right(a, b, n)}')
                     case 2:
-                        print('Вы выбрали алгоритм с переменным шагом')
+                        print('\nВы выбрали двойной пересчёт')
+                        print(f'\nРезультат: {doubleRecRight(a, b, n)}')
+                    case 3:
+                        print('\nВы выбрали двойной пересчёт с отступами')
+                        print(f'\nРезультат: {doubleRec2Right(a, b, n)}')
             case 3:
-                print('Вы выбрали метод трапеций')
-                print('Выберите алгоритм работы: \n 1.Алгоритм с постоянным шагом \n 2.Алгоритм с переменным шагом')
-                print('Введите число')
-                algorithm = int(input())
+                print('\nВы выбрали метод трапеций')
+                print('\nВыберите алгоритм работы: '
+                      '\n 1. Алгоритм с постоянным шагом' 
+                      '\n 2. Двойной пересчёт'
+                      '\n 3. Двойной пересчёт с отступами')
+                algorithm = int(input('Введите число: '))
                 match algorithm:
                     case 1:
-                        print('Вы выбрали алгоритм с постоянным шагом')
-                        print(Trapeze(a, b, n))
+                        print('\nВы выбрали алгоритм с постоянным шагом')
+                        print(f'\nРезультат: {trap(a, b, n)}')
                     case 2:
-                        print('Вы выбрали алгоритм с переменным шагом')
+                        print('\nВы выбрали двойной пересчёт')
+                        print(f'\nРезультат: {doubleRecTrap(a, b, n)}')
+                    case 3:
+                        print('\nВы выбрали двойной пересчёт с отступами')
+                        print(f'\nРезультат: {doubleRec2Trap(a, b, n)}')
             case 4:
-                print('Вы выбрали метод парабол')
-                print('Выберите алгоритм работы: \n 1.Алгоритм с постоянным шагом \n 2.Алгоритм с переменным шагом')
-                print('Введите число')
-                algorithm = int(input())
+                print('\nВы выбрали метод парабол')
+                print('\nВыберите алгоритм работы: '
+                      '\n 1. Алгоритм с постоянным шагом' 
+                      '\n 2. Двойной пересчёт'
+                      '\n 3. Двойной пересчёт с отступами')
+
+                algorithm = int(input('Введите число: '))
                 match algorithm:
                     case 1:
-                        print('Вы выбрали алгоритм с постоянным шагом')
-                        print(Parabol(a, b, n))
+                        print('\nВы выбрали алгоритм с постоянным шагом')
+                        print(f'\nРезультат: {trap(a, b, n)}')
                     case 2:
-                        print('Вы выбрали алгоритм с переменным шагом')
+                        print('\nВы выбрали двойной пересчёт')
+                        print(f'\nРезультат: {doubleRecTrap(a, b, n)}')
+                    case 3:
+                        print('\nВы выбрали двойной пересчёт с отступами')
+                        print(f'\nРезультат: {doubleRec2Trap(a, b, n)}')
