@@ -1,5 +1,9 @@
 from math import *
 
+def tkGetFformula(smth):
+    global fformula
+    fformula = smth
+
 def getFformula():
     global fformula 
     fformula = input('\nВведите выражение: ')
