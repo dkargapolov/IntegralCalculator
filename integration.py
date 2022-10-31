@@ -1,16 +1,20 @@
 from math import *
 
+# Получение выражения для пользовательского интерфейса
 def tkGetFormula(smth):
     global formula
     formula = smth
 
+# Получение выражения для консольного меню
 def getFormula():
     global formula 
     formula = input('\nВведите выражение: ')
 
+# Воспроизведение выражения
 def f(x):
     return eval(formula)
 
+# Метод левых прямоугольников
 def left(a,b,n):
     s = 0
     h = (b - a) / n
@@ -23,6 +27,7 @@ def left(a,b,n):
     result = h * s
     return result
 
+# Метод правых прямоугольников
 def right(a,b,n):
     s = 0
     h = (b - a) / n
@@ -35,6 +40,7 @@ def right(a,b,n):
     result = h * s
     return result
 
+# Метод трапеций
 def trap(a,b,n):
     s = 0
     h = (b - a) / n
@@ -47,6 +53,7 @@ def trap(a,b,n):
     result = h * ((f(a) + f(b)) / 2 + s)
     return result
 
+# Метод парабол
 def simp(a,b,n):
     s1 = 0
     s2 = 0
@@ -64,6 +71,8 @@ def simp(a,b,n):
 
     result = h / 3 * (f(a) + f(2 * b) + 4 * s1 + 2 * s2)
     return result
+
+# Применение алгоритмов двойного пересчёта 
 
 def doubleRecLeft(a,b,n):
     In = 0
@@ -158,6 +167,8 @@ def doubleRecSimp(a,b,n):
         h = h / 2
 
     return I2n
+
+# Применение алгоритмов двойного пересчёта с отступами
 
 def doubleRec2Left(a,b,n):
     E = 0.0001

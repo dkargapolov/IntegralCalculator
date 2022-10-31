@@ -1,10 +1,9 @@
-from ast import main
 from tkinter import *
 from tkinter import messagebox
 from integration import *
 from multipleIntegration import *
 
-def calculate(): #assigns vars, calls volumes module
+def calculate(): 
     x = option.get()
     match x:
         case 1:
@@ -84,12 +83,6 @@ def calculate(): #assigns vars, calls volumes module
                             result = f'Результат: {doubleRec2Simp(height, width, length)}'
                             reslbl = Label(rec_frame, text=result, padx=5, pady=5)
                             reslbl.grid(column=1, row=5)
-                            
-                        
-
-            # result = 
-
-            #messagebox.showinfo('Вы выбрали численное интегрирование', volume) #displays calculation result
 
         case 2:
             mheightx = mheighttxt.get()
@@ -136,10 +129,10 @@ def sphere():
     rec_frame.grid_forget()
     sphere_frame.grid(row=1, column=0)
 
-window = Tk() #creates window ident
+window = Tk() 
 
 window.title("Интегралы")
-window.geometry('800x500')
+window.geometry('820x300')
 
 option = IntVar()
 
@@ -156,7 +149,7 @@ method = IntVar()
 algorithm = IntVar()
 
 blanklbl = Label(rec_frame, text=" ", padx=5, pady=5)
-heightlbl = Label(rec_frame, text="Введите a: ", padx=5, pady=5) #creates ident labels
+heightlbl = Label(rec_frame, text="Введите a: ", padx=5, pady=5) 
 widthlbl = Label(rec_frame, text="Введите b: ", padx=5, pady=5)
 lengthlbl = Label(rec_frame, text="Введите n: ", padx=5, pady=5)
 explbl = Label(rec_frame, text="Введите выражение: ", padx=5, pady=5)
@@ -164,7 +157,7 @@ mlbl = Label(rec_frame, text="Метод:", padx=5, pady=5)
 alglbl = Label(rec_frame, text="Алгоритм:", padx=5, pady=5)
 
 mblanklbl = Label(sphere_frame, text=" ", padx=5, pady=5)
-mheightlbl = Label(sphere_frame, text="Введите a: ", padx=5, pady=5) #creates ident labels
+mheightlbl = Label(sphere_frame, text="Введите a: ", padx=5, pady=5) 
 mwidthlbl = Label(sphere_frame, text="Введите b: ", padx=5, pady=5)
 mclbl = Label(sphere_frame, text="Введите c: ", padx=5, pady=5)
 mdlbl = Label(sphere_frame, text="Введите d: ", padx=5, pady=5)
@@ -188,27 +181,24 @@ perbtn = Radiobutton(rec_frame, text="Переменный шаг", variable=alg
 drbtn = Radiobutton(rec_frame, text="Двойной пересчёт", variable=algorithm, value=2)
 dr2btn = Radiobutton(rec_frame, text="Двойной пересчёт с отступами", variable=algorithm, value=3)
 
-exptxt = Entry(rec_frame, width=10)
-heighttxt = Entry(rec_frame, width=10) #creates entry boxes
+exptxt = Entry(rec_frame, width=20)
+heighttxt = Entry(rec_frame, width=10) 
 widthtxt = Entry(rec_frame, width=10)
 lengthtxt = Entry(rec_frame, width=10)
 
-mexptxt = Entry(sphere_frame, width=10)
-mheighttxt = Entry(sphere_frame, width=10) #creates entry boxes
+mexptxt = Entry(sphere_frame, width=20)
+mheighttxt = Entry(sphere_frame, width=10) 
 mwidthtxt = Entry(sphere_frame, width=10)
 mlengthtxt = Entry(sphere_frame, width=10)
 mctxt = Entry(sphere_frame, width=10)
 mdtxt = Entry(sphere_frame, width=10)
 mlengthYtxt = Entry(sphere_frame, width=10)
 
-calcbtn = Button(rec_frame, text="Вычислить", command=calculate, padx=5, pady=5) #hey it's a button that calls the calculate function!
-mcalcbtn = Button(sphere_frame, text="Вычислить", command=calculate, padx=5, pady=5) #hey it's a button that calls the calculate function!
-
-#quitbtn = Button(window, text="Выйти", command=window.destroy) #quit button does what it says on the tin
-
+calcbtn = Button(rec_frame, text="Вычислить", command=calculate, padx=5, pady=5) 
+mcalcbtn = Button(sphere_frame, text="Вычислить", command=calculate, padx=5, pady=5) 
 
 blanklbl.grid(column=0, row=0)
-heightlbl.grid(column=0, row=1) #assigns grid positions (preferred to pack for precise layout)
+heightlbl.grid(column=0, row=1)
 widthlbl.grid(column=0, row=2)
 lengthlbl.grid(column=0, row=3)
 explbl.grid(column=0, row=4)
@@ -216,7 +206,7 @@ mlbl.grid(column=2, row=0)
 alglbl.grid(column=3, row=0)
 
 mblanklbl.grid(column=0, row=0)
-mheightlbl.grid(column=0, row=1) #assigns grid positions (preferred to pack for precise layout)
+mheightlbl.grid(column=0, row=1)
 mwidthlbl.grid(column=0, row=2)
 mlengthlbl.grid(column=0, row=3)
 mexplbl.grid(column=0, row=4)
@@ -249,13 +239,11 @@ heighttxt.grid(column=1, row=1)
 widthtxt.grid(column=1, row=2)
 lengthtxt.grid(column=1, row=3)
 exptxt.grid(column=1, row=4)
-#radtxt.grid(column=1, row=0)
 
 mheighttxt.grid(column=1, row=1)
 mwidthtxt.grid(column=1, row=2)
 mlengthtxt.grid(column=1, row=3)
 mexptxt.grid(column=1, row=4)
-#mradtxt.grid(column=1, row=0)
 
 calcbtn.grid(column=0, row=5)
 mcalcbtn.grid(column=0, row=5)

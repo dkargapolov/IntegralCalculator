@@ -12,7 +12,7 @@ type = int(input('Введите число: '))
 
 match type:
     case 1:
-        getFormula()
+        getFormula() # Ввод выражения
         
         a = int(input('Введите нижний предел: '))
         b = int(input('Введите верхний предел: '))

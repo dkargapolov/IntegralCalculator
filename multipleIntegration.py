@@ -1,16 +1,20 @@
 from math import *
 
+# Получение выражения для пользовательского интерфейса
 def tkGetFformula(smth):
     global fformula
     fformula = smth
 
+# Получение выражения для консольного меню
 def getFformula():
     global fformula 
     fformula = input('\nВведите выражение: ')
 
+# воспроизведение выражения
 def ff(x, y):
     return eval(fformula)
 
+# Метод левых прямоугольников
 def mLeft(a, b, c, d, nx, ny):
     sumX = 0
     hx = (b - a) / nx
@@ -29,6 +33,7 @@ def mLeft(a, b, c, d, nx, ny):
     
     return hx * sumX
 
+# Метод правых прямоугольников
 def mRight(a, b, c, d, nx, ny):
     sumX = 0
     hx = (b - a) / nx
@@ -47,6 +52,7 @@ def mRight(a, b, c, d, nx, ny):
     
     return hx * sumX
 
+# Метод трапеций
 def mTrap(a, b, c, d, nx, ny):
     sumX = 0
     hx = (b - a) / nx
@@ -70,6 +76,7 @@ def mTrap(a, b, c, d, nx, ny):
 
     return hx * ((ffa + ffb) / 2 + sumX)
 
+# Метод парабол
 def mSimp(a, b, c, d, nx, ny):
     sumX = 0
     sumX2 = 0
