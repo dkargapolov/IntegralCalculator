@@ -142,9 +142,6 @@ Radiobutton(window, text="Кратные интегралы", variable=option, v
 rec_frame = Frame(window)
 sphere_frame = Frame(window)
 
-
-
-
 method = IntVar()
 algorithm = IntVar()
 
