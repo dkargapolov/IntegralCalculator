@@ -1,4 +1,3 @@
-from webbrowser import get
 from integration import *
 from multipleIntegration import *
 from math import *
